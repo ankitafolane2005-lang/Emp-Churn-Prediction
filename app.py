@@ -1,7 +1,6 @@
 import pickle
 from flask import Flask, render_template_string, request
 import numpy as np
-import pandas as pd
 
 app = Flask(__name__)
 
@@ -153,7 +152,7 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
   try:
-    # 1. Retrieve the 8 required features from form input[cite: 3]
+    # 1. Retrieve the 8 required features from form input
     education_str = request.form['Education']
     joining_year = float(request.form['JoiningYear'])
     city_str = request.form['City']
@@ -174,7 +173,7 @@ def predict():
     gender = gender_map.get(gender_str, 0)
     ever_benched = benched_map.get(ever_benched_str, 0)
 
-    # 3. Create feature vector matching model's expected input structure[cite: 3]
+    # 3. Create feature vector matching model's expected input structure
     features = [[
         education,
         joining_year,
